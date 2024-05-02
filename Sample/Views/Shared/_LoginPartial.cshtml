@@ -16,27 +16,130 @@
 }
 else
 {
-        <div class="card SignCard border border-top-0">
+        
+         
 
-            <div class="container text-center">
-                <div class="row align-items-end">
+             <div class="container text-center">
+                 <div class="row align-items-end">
                     <div class="col ">
-                        <a class="btn btn-outline-warning Sign rounded-pill" asp-area="Identity" asp-page="/Account/Register"><p class="Sign-text">Sign Up</p> </a>
+                         @* <a class="btn btn-outline-warning Sign rounded-pill" asp-area="Identity" asp-page="/Account/Register" id="registerButton"><p class="Sign-text">Sign Up</p> </a>  *@
+                         <a class="btn btn-outline-warning Sign rounded-pill"  id="registerButton"><p class="Sign-text">Sign Up</p> </a>
                     </div>
-                    <div class="col">
-                        <a class="btn btn-outline-warning Sign rounded-pill" asp-area="Identity" asp-page="/Account/Login"><p class="Sign-text">Sign In</p></a>
+                     <div class="col">
+                         <a class="btn btn-outline-warning Sign rounded-pill" asp-area="Identity" asp-page="/Account/Login"><p class="Sign-text">Sign In</p></a>
+                     </div>
+                    
+                </div>
+            </div>
+
+         
+           
+       @*  </div><div class="card SignCard border border-top-0">
+
+             <div class="container text-center">
+                 <div class="row align-items-end">
+                    <div class="col ">
+                         @* <a class="btn btn-outline-warning Sign rounded-pill" asp-area="Identity" asp-page="/Account/Register" id="registerButton"><p class="Sign-text">Sign Up</p> </a>  
+                         <a class="btn btn-outline-warning Sign rounded-pill"  id="registerButton"><p class="Sign-text">Sign Up</p> </a>
                     </div>
+                     <div class="col">
+                         <a class="btn btn-outline-warning Sign rounded-pill" asp-area="Identity" asp-page="/Account/Login"><p class="Sign-text">Sign In</p></a>
+                     </div>
                     
                 </div>
             </div>
            
-        </div>
+        </div> *@
         
-    @* <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Sign Up</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Sign In</a>
-    </li> *@
+    
 }
 </ul>
+
+
+
+
+<div id="popup" class="popup">
+    <div class="popup-content  rounded-4 card" id="popupContent">
+       
+    </div>
+</div>
+
+
+@* <script>
+    document.getElementById("registerButton").addEventListener("click", function () {
+        // Show the popup
+        document.getElementById("popup").style.display = "block";
+
+        // Fetch the content of the registration page using AJAX
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', '/Identity/Account/Register', true); // Adjust the URL as needed
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                // Insert the fetched content into the popup div
+                document.getElementById("popupContent").innerHTML = xhr.responseText;
+            }
+        };
+        xhr.send();
+    });
+
+    // Close the popup when clicking outside of it
+    window.onclick = function (event) {
+        if (event.target == document.getElementById("popup")) {
+            document.getElementById("popup").style.display = "none";
+        }
+    }
+</script> *@
+@* <script>
+    document.getElementById("registerButton").addEventListener("click", function () {
+        // Show the popup
+        document.getElementById("popup").style.display = "block";
+
+        // Fetch the content of the registration form using AJAX
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', '/Identity/Account/Register?handler=RegisterForm', true); // Adjust the URL as needed
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                // Insert the fetched content (registration form) into the popup div
+                document.getElementById("popupContent").innerHTML = xhr.responseText;
+            }
+        };
+        xhr.send();
+    });
+
+    // Close the popup when clicking outside of it
+    window.onclick = function (event) {
+        if (event.target == document.getElementById("popup")) {
+            document.getElementById("popup").style.display = "none";
+        }
+    }
+</script> *@
+
+
+<script>
+    document.getElementById("registerButton").addEventListener("click", function () {
+        // Show the popup
+        document.getElementById("popup").style.display = "block";
+
+        // Fetch the content of the registration form using AJAX
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', '/Identity/Account/Register?handler=RegisterForm', true); // Adjust the URL as needed
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                // Insert the fetched content (registration form) into the popup div
+                document.getElementById("popupContent").innerHTML = xhr.responseText;
+            }
+        };
+        xhr.send();
+    });
+
+    // Close the popup when clicking outside of it
+    window.onclick = function (event) {
+        if (event.target == document.getElementById("popup")) {
+            document.getElementById("popup").style.display = "none";
+        }
+    }
+</script>
+
+
+
+
