@@ -1,5 +1,23 @@
-﻿@{
+﻿@* @inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager *@
+@{
     ViewData["Title"] = "Home Page";
 }
+<a class="dropdown-item" asp-controller="Department" asp-action="ViewDepartment">Action</a>
+@* <div class="LogoutButton_Div">
+    @if (SignInManager.IsSignedIn(User))
+    {
+
+        <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+            <button type="submit" class="PopUpLogOutYes" id="confirmLogOut">Yes</button>
+        </form>
 
 
+    }
+    else
+    {
+
+    }
+
+    <button class="PopUpLogOutNo" type="button" id="cancelLogOut">No</button>
+</div> *@
