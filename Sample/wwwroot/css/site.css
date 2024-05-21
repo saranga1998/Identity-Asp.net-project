@@ -22,7 +22,7 @@ html {
 
 body {
     margin-bottom: 60px;
-    background-color: #f2ceda;
+    background-color: #5e72eb;
     
 }
 
@@ -34,10 +34,11 @@ body {
 }
 
 .Sign{
-    margin-top:10px;
+    margin-top:8px;
     width:85px;
-    height:30px;  
+    height:28px;  
     align-content:center;
+    
 }
 
 .SignCard {
@@ -52,7 +53,7 @@ body {
 .Sign-text{
     font-size:15px;
     font-weight:bold;
-    color:black;
+    color:white;
     padding-top:10px;
 }
 
@@ -73,6 +74,6 @@ body {
     margin: 10% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 60%;
+    width: 30%;
 }
 

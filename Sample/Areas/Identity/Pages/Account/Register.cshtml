@@ -1,7 +1,7 @@
 ﻿@page
 @model RegisterModel
 @{
-    ViewData["Title"] = "Register";
+    // ViewData["Title"] = "Register";
     Layout = "_LayoutCustome";
 }
 
@@ -12,51 +12,51 @@
 
 </div>
 
-<div class="row">
-    <div class="col-md-4 ">
+<div class="row justify-content-center">
+    <div class="col-md-10 ">
         <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
            
-            <hr />
+            <p class="fw-bold justify-content-center fs-4">Register Here</p>
             <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
 
-            <div class="form-floating mb-3">
-                <input asp-for="Input.FullName" class="form-control" autocomplete="username" aria-required="true" placeholder="abc" />
-                <label asp-for="Input.FullName">Full Name</label>
+            <div class="input-group input-group-sm mb-3 col-10 ">
+                <label class="input-group-text col-5 rounded-3 border-end-0 " asp-for="Input.FullName">Full Name</label>
+                <input asp-for="Input.FullName" class="form-control col-5 " autocomplete="username" aria-required="true" placeholder="abc" /> 
                 <span asp-validation-for="Input.FullName" class="text-danger"></span>
             </div>
 
-            <div class="form-floating mb-3">
-                <input asp-for="Input.RegNo" class="form-control" autocomplete="username" aria-required="true" placeholder="2017/icts/##" />
-                <label asp-for="Input.RegNo">Registraion No</label>
+            <div class="input-group input-group-sm mb-3 col-10">
+                <label class="input-group-text col-5 rounded-3" asp-for="Input.RegNo">Registration No</label>
+                <input asp-for="Input.RegNo" class="form-control col-5" autocomplete="registration no" aria-required="true" placeholder="2017/icts/##" />               
                 <span asp-validation-for="Input.RegNo" class="text-danger"></span>
             </div>
 
-            <div class="form-floating mb-3">
-                <input asp-for="Input.Address" class="form-control" autocomplete="username" aria-required="true" placeholder="abc" />
-                <label asp-for="Input.Address">Address</label>
+            <div class="input-group input-group-sm mb-3 col-10">
+                <label class="input-group-text col-5 rounded-3" asp-for="Input.Address">Address</label>
+                <input asp-for="Input.Address" class="form-control col-5" autocomplete="address" aria-required="true" placeholder="city name" />
                 <span asp-validation-for="Input.Address" class="text-danger"></span>
             </div>
 
-            <div class="form-floating mb-3">
-                <input asp-for="Input.PhoneNo" class="form-control" autocomplete="username" aria-required="true" placeholder="abc" />
-                <label asp-for="Input.PhoneNo">Mobile No</label>
+            <div class="input-group input-group-sm mb-3 col-10">
+                <label class="input-group-text col-5 rounded-3" asp-for="Input.PhoneNo">Mobile No</label>
+                <input asp-for="Input.PhoneNo" class="form-control col-5" autocomplete="phone no" aria-required="true" placeholder="+94 7#######" />
                 <span asp-validation-for="Input.PhoneNo" class="text-danger"></span>
             </div>
 
-            <div class="form-floating mb-3">
-                <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
-                <label asp-for="Input.Email">Email</label>
+            <div class="input-group input-group-sm mb-3 col-10">
+                <label class="input-group-text col-5 rounded-3" asp-for="Input.Email">Email</label>
+                <input asp-for="Input.Email" class="form-control col-5" autocomplete="username" aria-required="true" placeholder="name@example.com" />
                 <span asp-validation-for="Input.Email" class="text-danger"></span>
             </div>
 
-            <div class="form-floating mb-3">
-                <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
-                <label asp-for="Input.Password">Password</label>
+            <div class="input-group input-group-sm mb-3 col-10">
+                <label class="input-group-text col-5 rounded-3" asp-for="Input.Password">Password</label>
+                <input asp-for="Input.Password" class="form-control col-5" autocomplete="new-password" aria-required="true" placeholder="password" />
                 <span asp-validation-for="Input.Password" class="text-danger"></span>
             </div>
-            <div class="form-floating mb-3">
-                <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
-                <label asp-for="Input.ConfirmPassword">Confirm Password</label>
+            <div class="input-group input-group-sm mb-3 col-10">
+                <label class="input-group-text col-5 rounded-3" asp-for="Input.ConfirmPassword">Confirm Password</label>
+                <input asp-for="Input.ConfirmPassword" class="form-control col-5" autocomplete="new-password" aria-required="true" placeholder="password" />
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
             <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
