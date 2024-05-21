@@ -1,14 +1,17 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Sample.Interface;
+using Sample.Models;
 using Sample.ViewModel;
 
 namespace Sample.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class DepartmentController : Controller
     {
         private readonly IDepartmentRepository _Departmentrepository;
+        
         public DepartmentController(IDepartmentRepository Departmentrepository) {
         
             _Departmentrepository = Departmentrepository;

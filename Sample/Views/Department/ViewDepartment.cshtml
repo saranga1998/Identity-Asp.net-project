@@ -1,7 +1,9 @@
 ﻿@model Sample.ViewModel.DepartmentViewModel
-
+@* @inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager *@
 @{
     ViewData["Title"] = "ViewDepartment";
+    Layout = "_LayoutCustome";
 }
 
 <h1>ViewDepartment</h1>
