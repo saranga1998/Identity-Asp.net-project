@@ -2,38 +2,43 @@
 
 @{
     ViewData["Title"] = "ViewDepartment";
-    Layout = "_LayoutCustome";
+    Layout = "_LayoutActions";
 }
 
-<h1>ViewDepartment</h1>
+
 
 <div class="row justify-content-center m-3">
-    <table class="table">
-        <thead>
-            <tr>
-                <th class="Col01">Department ID</th>
-                <th class="Col02">Department Name</th>
-            </tr>
-        </thead>
-        <tbody>
-            @if (Model != null)
-            {
-                @foreach (var department in Model.Departments)
-                {
-                    <tr>
-                        <td>@department.DepartmentId</td>
-                        <td>@department.Name</td>
+    <div class="col-md-8 m-3 card">
+        <p class="fw-bold justify-content-center fs-4">Add Department</p>
 
-                        <td>
-                            <!-- Links for Edit and Delete actions -->
-                            <a asp-action="Edit" asp-route-id="@department.DepartmentId">Edit</a>
-                            <a asp-action="Delete" asp-route-id="@department.Name">Delete</a>
-                        </td>
-                    </tr>
+        <table class="table border border-1 rounded-2">
+            <thead >
+                <tr>
+                    <th class="Col01">Department ID</th>
+                    <th class="Col02">Department Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null)
+                {
+                    @foreach (var department in Model.Departments)
+                    {
+                        <tr>
+                            <td>@department.DepartmentId</td>
+                            <td>@department.Name</td>
+
+                            @* <td>
+
+                                <a asp-action="Edit" asp-route-id="@department.DepartmentId">Edit</a>
+                                <a asp-action="Delete" asp-route-id="@department.Name">Delete</a>
+                            </td> *@
+                        </tr>
+                    }
                 }
-            }
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
+   
 
 
 </div>

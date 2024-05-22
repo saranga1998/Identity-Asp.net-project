@@ -17,20 +17,24 @@ namespace Sample.Controllers
             _Departmentrepository = Departmentrepository;
         }
 
-        [HttpPost]
+        [HttpGet]
         public IActionResult AddDepartment()
         {
             return View();
         }
 
-        [HttpPost]
 
+        //Add department post method
+        [HttpPost]
         public async Task<IActionResult> AddDepartment(DepartmentViewModel department)
         {
             await _Departmentrepository.AddDepartment(department);
             return RedirectToAction("AddDepartment", "Department");
         }
 
+
+
+        //View All Departments get method
         [HttpGet]
         public async Task<IActionResult> ViewDepartment()
         {
