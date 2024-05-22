@@ -16,6 +16,8 @@ namespace Sample.Controllers
         
             _Departmentrepository = Departmentrepository;
         }
+
+        [HttpPost]
         public IActionResult AddDepartment()
         {
             return View();
@@ -29,9 +31,15 @@ namespace Sample.Controllers
             return RedirectToAction("AddDepartment", "Department");
         }
 
-        public IActionResult ViewDepartment()
+        [HttpGet]
+        public async Task<IActionResult> ViewDepartment()
         {
-            return View();
+            var AllDepartments = await _Departmentrepository.ViewAllDepartment();
+            var Viewmodel = new CompositeViewModel
+            {
+                Departments = AllDepartments
+            };
+            return View(Viewmodel);
         }
     }
 }

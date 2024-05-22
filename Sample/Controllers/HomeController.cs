@@ -18,8 +18,17 @@ namespace Sample.Controllers
             _userManager = userManager;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            // Get the current logged-in user
+            ApplicationUser user = await _userManager.GetUserAsync(User);
+
+            if (user != null)
+            {
+                string fullName = user.FullName;
+                // Now you have the full name, you can use it as needed
+                ViewData["FullName"] = fullName;
+            }
             return View();
         }
 

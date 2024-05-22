@@ -6,5 +6,10 @@ namespace Sample.Interface
     {
 
         Task AddDepartment(DepartmentViewModel Department);
+        Task  <List<DepartmentViewModel>> ViewAllDepartment();
+        //Task<ZoneViewModel> GetByIdAsync(string id);
+        //Task<List<ZoneViewModel>> GetAllAsync();
+
+        //Task UpdateAsync(ZoneViewModel zone);
     }
 }

@@ -121,8 +121,8 @@ namespace Sample.Areas.Identity.Pages.Account
                     _logger.LogInformation("User logged in.");
                     //return LocalRedirect(returnUrl);
                     //return LocalRedirect("~/");
-                    //return RedirectToAction("AddDepartment", "Department");
-                    return RedirectToLocal(returnUrl);
+                    return RedirectToAction("AddDepartment", "Department");
+                    //return RedirectToLocal(returnUrl);
                 }
                 if (result.RequiresTwoFactor)
                 {
