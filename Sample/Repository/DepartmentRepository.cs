@@ -71,11 +71,29 @@ namespace Sample.Repository
         {
             var updateDepartment = await _applicationDb.Departments.FindAsync(Department.DepartmentId);
 
-            updateDepartment.DepartmentId = Department.DepartmentId;
-            updateDepartment.Name = Department.Name;
+            if (updateDepartment != null)
+            {
+                updateDepartment.DepartmentId = Department.DepartmentId;
+                updateDepartment.Name = Department.Name;
+                _applicationDb.Update(updateDepartment);
+                await _applicationDb.SaveChangesAsync();
+            }
+            
 
-            _applicationDb.Update(updateDepartment);
-            await _applicationDb.SaveChangesAsync();
+            
+        }
+
+        public async Task DeleteDepartment(int id)
+        {
+            var DeleteDepartment = await _applicationDb.Departments.FindAsync(id);
+
+            if (DeleteDepartment != null)
+            {
+                _applicationDb.Remove(DeleteDepartment);
+                await _applicationDb.SaveChangesAsync();
+            }
+
+            
         }
     }
 }
