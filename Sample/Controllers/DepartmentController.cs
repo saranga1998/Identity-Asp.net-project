@@ -71,6 +71,7 @@ namespace Sample.Controllers
             //}
             
         }
+
         [HttpGet]
         public async Task<IActionResult> EditDepartment(int DepatmentId) 
         {
@@ -86,6 +87,7 @@ namespace Sample.Controllers
             try
             {
                 await _Departmentrepository.UpdateDepartment(update);
+                TempData["SuccessMessage"] = "Department successfully Updated.";
                 return RedirectToAction("ViewDepartment", "Department");
             }
             catch(Exception ex)
@@ -95,6 +97,24 @@ namespace Sample.Controllers
             }
 
             
+        }
+
+        [HttpPost]
+
+        public async Task<IActionResult> DeleteDepartment(int DepatmentId)
+        {
+            try
+            {
+                await _Departmentrepository.DeleteDepartment(DepatmentId);
+                TempData["SuccessMessage"] = "Department successfully deleted.";
+                return RedirectToAction("ViewDepartment", "Department");
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError(ex, "Something Worng.Check Again !");
+                TempData["ErrorMessage"] = "An error occurred while deleting the department. Please try again.";
+                return View();
+            }
         }
     }
 }

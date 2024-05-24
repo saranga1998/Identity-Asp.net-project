@@ -11,8 +11,8 @@ namespace Sample.Interface
         Task<DepartmentViewModel> DepatmentGetById(int id);
 
         Task UpdateDepartment(DepartmentViewModel Department);
-        //Task<List<ZoneViewModel>> GetAllAsync();
-
+        
+        Task DeleteDepartment(int id);
        
     }
 }

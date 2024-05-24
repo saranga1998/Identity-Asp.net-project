@@ -3,11 +3,28 @@
 @{
     ViewData["Title"] = "ViewDepartment";
     Layout = "_LayoutActions";
+    var successMessage = TempData["SuccessMessage"] as string;
+    var errorMessage = TempData["ErrorMessage"] as string;
 }
 
 
 
 <div class="row justify-content-center m-3">
+
+    @if (!string.IsNullOrEmpty(successMessage))
+    {
+        <div class="alert alert-success">
+            @successMessage
+        </div>
+    }
+
+    @if (!string.IsNullOrEmpty(errorMessage))
+    {
+        <div class="alert alert-danger">
+            @errorMessage
+        </div>
+    }
+
     <div class="col-md-8 m-3 card">
         <p class="fw-bold justify-content-center fs-4">View All Department</p>
 
@@ -29,8 +46,9 @@
 
                             <td>
 
-                                <a href="/Department/EditDepartment?DepartmentId=@department.DepartmentId">Edit</a>
-                                @* <a asp-action="Delete" asp-route-id="@department.Name">Delete</a> *@
+                                <a class="btn" href="/Department/EditDepartment?DepatmentId=@department.DepartmentId">Edit</a>
+                                <a class="btn" href="/Department/DeleteDepartment?DepatmentId=@department.DepartmentId">Delete</a>
+                               
                             </td>
                         </tr>
                     }
