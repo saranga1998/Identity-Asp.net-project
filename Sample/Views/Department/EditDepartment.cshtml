@@ -1,0 +1,42 @@
+﻿@model Sample.ViewModel.DepartmentViewModel
+
+@{
+
+    Layout = "_LayoutActions";
+}
+
+
+<div class="row justify-content-center m-3">
+
+    <div class="col-md-6 m-3 card">
+        <p class="fw-bold justify-content-center fs-4">Edit Department</p>
+        <form asp-action="EditDepartment" asp-controller="Department">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="input-group input-group-md mb-3 col-8">
+                <label asp-for="DepartmentId" class="input-group-text col-4 rounded-3 border border-end-0 border-3">Department Id</label>
+                <input asp-for="DepartmentId" class="form-control col-4 rounded-3 border border-start-0 border-3" />
+                <span asp-validation-for="DepartmentId" class="text-danger"></span>
+            </div>
+            <div class="input-group input-group-md mb-3 col-8">
+                <label asp-for="Name" class="input-group-text col-4 rounded-3 border border-end-0 border-3">Department Name</label>
+                <input asp-for="Name" class="form-control col-4 rounded-3 border border-start-0 border-3" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="input-group input-group-md mb-3 col-8">
+                <input type="submit" value="Create" class="w-100 btn btn-lg btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

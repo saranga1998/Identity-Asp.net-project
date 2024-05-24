@@ -14,6 +14,7 @@ namespace Sample.Repository
             _applicationDb = ApplicationDb;
         }
 
+        //Add Department
         public async Task AddDepartment(DepartmentViewModel Department)
         {
             await _applicationDb.Database.ExecuteSqlRawAsync("SET IDENTITY_INSERT dbo.Departments ON");
@@ -28,6 +29,9 @@ namespace Sample.Repository
             await _applicationDb.Database.ExecuteSqlRawAsync("SET IDENTITY_INSERT dbo.Departments OFF");
         }
 
+        
+
+        //View All Department
         public async Task<List<DepartmentViewModel>> ViewAllDepartment()
         {
             var departments = await _applicationDb.Departments.ToListAsync();
@@ -46,6 +50,32 @@ namespace Sample.Repository
             }
 
             return departmentViewModels;
+        }
+
+        //Edit using Department Id
+        public async Task<DepartmentViewModel> DepatmentGetById(int id)
+        {
+            var department = await _applicationDb.Departments.FindAsync(id);
+
+            var departmentViewModel = new DepartmentViewModel
+            {
+                DepartmentId = department.DepartmentId, 
+                Name = department.Name
+            };
+
+            return departmentViewModel;
+
+        }
+
+        public async Task UpdateDepartment(DepartmentViewModel Department)
+        {
+            var updateDepartment = await _applicationDb.Departments.FindAsync(Department.DepartmentId);
+
+            updateDepartment.DepartmentId = Department.DepartmentId;
+            updateDepartment.Name = Department.Name;
+
+            _applicationDb.Update(updateDepartment);
+            await _applicationDb.SaveChangesAsync();
         }
     }
 }

@@ -7,9 +7,12 @@ namespace Sample.Interface
 
         Task AddDepartment(DepartmentViewModel Department);
         Task  <List<DepartmentViewModel>> ViewAllDepartment();
-        //Task<ZoneViewModel> GetByIdAsync(string id);
+
+        Task<DepartmentViewModel> DepatmentGetById(int id);
+
+        Task UpdateDepartment(DepartmentViewModel Department);
         //Task<List<ZoneViewModel>> GetAllAsync();
 
-        //Task UpdateAsync(ZoneViewModel zone);
+       
     }
 }
