@@ -9,7 +9,7 @@
 
 <div class="row justify-content-center m-3">
     <div class="col-md-8 m-3 card">
-        <p class="fw-bold justify-content-center fs-4">Add Department</p>
+        <p class="fw-bold justify-content-center fs-4">View All Department</p>
 
         <table class="table border border-1 rounded-2">
             <thead >
@@ -27,11 +27,11 @@
                             <td>@department.DepartmentId</td>
                             <td>@department.Name</td>
 
-                            @* <td>
+                            <td>
 
-                                <a asp-action="Edit" asp-route-id="@department.DepartmentId">Edit</a>
-                                <a asp-action="Delete" asp-route-id="@department.Name">Delete</a>
-                            </td> *@
+                                <a href="/Department/EditDepartment?DepartmentId=@department.DepartmentId">Edit</a>
+                                @* <a asp-action="Delete" asp-route-id="@department.Name">Delete</a> *@
+                            </td>
                         </tr>
                     }
                 }

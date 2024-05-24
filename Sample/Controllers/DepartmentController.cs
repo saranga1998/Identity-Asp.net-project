@@ -11,10 +11,12 @@ namespace Sample.Controllers
     public class DepartmentController : Controller
     {
         private readonly IDepartmentRepository _Departmentrepository;
+        private readonly ILogger<DepartmentController> _logger;
         
-        public DepartmentController(IDepartmentRepository Departmentrepository) {
+        public DepartmentController(IDepartmentRepository Departmentrepository,ILogger <DepartmentController> logger) {
         
             _Departmentrepository = Departmentrepository;
+            _logger = logger;
         }
 
         [HttpGet]
@@ -28,8 +30,17 @@ namespace Sample.Controllers
         [HttpPost]
         public async Task<IActionResult> AddDepartment(DepartmentViewModel department)
         {
-            await _Departmentrepository.AddDepartment(department);
-            return RedirectToAction("AddDepartment", "Department");
+            try
+            {
+                await _Departmentrepository.AddDepartment(department);
+                return RedirectToAction("AddDepartment", "Department");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Something Worng.Check Again !");
+                return View();
+            }
+            
         }
 
 
@@ -44,6 +55,46 @@ namespace Sample.Controllers
                 Departments = AllDepartments
             };
             return View(Viewmodel);
+            //try
+            //{
+            //    var AllDepartments = await _Departmentrepository.ViewAllDepartment();
+            //    var Viewmodel = new CompositeViewModel
+            //    {
+            //        Departments = AllDepartments
+            //    };
+            //    return View(Viewmodel);
+            //}
+            //catch (Exception ex)
+            //{
+            //    _logger.LogError(ex, "Something Worng.Check Again !");
+            //    return View();
+            //}
+            
+        }
+        [HttpGet]
+        public async Task<IActionResult> EditDepartment(int DepatmentId) 
+        {
+            var EditDepartment = await _Departmentrepository.DepatmentGetById(DepatmentId);
+            return View(EditDepartment);
+            
+        }
+
+        [HttpPost]
+
+        public async Task<IActionResult> EditDepartment(DepartmentViewModel update)
+        {
+            try
+            {
+                await _Departmentrepository.UpdateDepartment(update);
+                return RedirectToAction("ViewDepartment", "Department");
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError(ex, "Something Worng.Check Again !");
+                return View();
+            }
+
+            
         }
     }
 }
