@@ -6,5 +6,13 @@ namespace Sample.Interface
     {
 
         Task AddStudent(StudentViewModel student);
+
+        Task<List<StudentViewModel>> ViewAllStudents();
+
+        Task<StudentViewModel> StudentGetById(int id);
+
+        Task UpdateStudent(StudentViewModel student);
+
+        Task DeleteStudent(int id);
     }
 }
