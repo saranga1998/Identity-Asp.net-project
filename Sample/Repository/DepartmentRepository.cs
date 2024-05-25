@@ -83,9 +83,9 @@ namespace Sample.Repository
             
         }
 
-        public async Task DeleteDepartment(int id)
+        public async Task DeleteDepartment(int DepatmentId)
         {
-            var DeleteDepartment = await _applicationDb.Departments.FindAsync(id);
+            var DeleteDepartment = await _applicationDb.Departments.FindAsync(DepatmentId);
 
             if (DeleteDepartment != null)
             {

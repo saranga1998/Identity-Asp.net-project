@@ -98,10 +98,23 @@ namespace Sample.Controllers
 
             
         }
-
-        [HttpPost]
-
+        [HttpGet]
         public async Task<IActionResult> DeleteDepartment(int DepatmentId)
+        {
+            var department = await _Departmentrepository.DepatmentGetById(DepatmentId);
+
+            if (department == null)
+            {
+                TempData["ErrorMessage"] = "Department not found.";
+                return RedirectToAction("ViewDepartment", "Department");
+            }
+
+            return View(department);
+        }
+
+        [HttpGet]
+
+        public async Task<IActionResult> DeleteDepartmentConform(int DepatmentId)
         {
             try
             {

@@ -1,7 +1,7 @@
 ﻿@model Sample.ViewModel.StudentViewModel
 
 @{
-    ViewData["Title"] = "AddStudent";
+    
     Layout = "_LayoutActions";
 }
 
@@ -9,8 +9,8 @@
 <div class="row justify-content-center m-3">
 
     <div class="col-md-6 m-3 card">
-        <p class="fw-bold justify-content-center fs-4">Add Student</p>
-        <form asp-action="AddStudent" asp-controller="Student">
+        <p class="fw-bold justify-content-center fs-4">Edit Student</p>
+        <form asp-action="EditStudent" asp-controller="Student">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="input-group input-group-md mb-3 col-8">
                 <label asp-for="Id" class="input-group-text col-4 rounded-3 border border-end-0 border-3">Student Id</label>
@@ -46,5 +46,8 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
+
