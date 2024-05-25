@@ -1,0 +1,68 @@
+﻿@model Sample.ViewModel.CompositeViewModel
+
+@{
+    ViewData["Title"] = "AddStudent";
+    Layout = "_LayoutActions";
+    var successMessage = TempData["SuccessMessage"] as string;
+    var errorMessage = TempData["ErrorMessage"] as string;
+}
+
+
+
+<div class="row justify-content-center m-3">
+
+    @if (!string.IsNullOrEmpty(successMessage))
+    {
+        <div class="alert alert-success">
+            @successMessage
+        </div>
+    }
+
+    @if (!string.IsNullOrEmpty(errorMessage))
+    {
+        <div class="alert alert-danger">
+            @errorMessage
+        </div>
+    }
+
+    <div class="col-md-8 m-3 card">
+        <p class="fw-bold justify-content-center fs-4">View All Students</p>
+
+        <table class="table border border-1 rounded-2">
+            <thead>
+                <tr>
+                    <th class="Col01">Student ID</th>
+                    <th class="Col02">Student Name</th>
+                    <th class="Col03">Student Address</th>
+                    <th class="Col04">Department Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null)
+                {
+                    @foreach (var student in Model.Students)
+                    {
+                        <tr>
+                            
+                            <td>@student.Id</td>
+                            <td>@student.Name</td>
+                            <td>@student.Address</td>
+                            <td>@student.DepartmentId</td>
+
+                            <td>
+
+                                <a class="btn" href="/Student/EditStudent?id=@student.Id">Edit</a>
+                                <a class="btn" href="/Student/DeleteStudent?stuId=@student.Id">Delete</a>
+
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+
+</div>
+

@@ -1,12 +1,13 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Sample.Interface;
+using Sample.Models;
 using Sample.Repository;
 using Sample.ViewModel;
 
 namespace Sample.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class StudentController : Controller
     {
         private readonly IStudentRepository _studentRepository;
@@ -68,12 +69,43 @@ namespace Sample.Controllers
             try
             {
                 await _studentRepository.UpdateStudent(update);
-                TempData["SuccessMessage"] = "Department successfully Updated.";
-                return RedirectToAction("ViewAllStudent", "Student");
+                TempData["SuccessMessage"] = "Student successfully Updated.";
+                return RedirectToAction("ViewAllStudents", "Student");
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Something Worng.Check Again !");
+                return View();
+            }
+        }
+
+        [HttpGet]
+
+        public async Task<IActionResult> DeleteStudent(int stuId)
+        {
+            var student = await _studentRepository.StudentGetById(stuId);
+            if (student == null)
+            {
+                TempData["ErrorMessage"] = "Student not found.";
+                return RedirectToAction("ViewAllStudents", "Student");
+            }
+            return View(student);
+        }
+
+        [HttpGet]
+
+        public async Task<IActionResult> DeleteStudentConfirm(int stuId)
+        {
+            try
+            {
+                await _studentRepository.DeleteStudent(stuId);
+                TempData["SuccessMessage"] = "Studnet successfully deleted.";
+                return RedirectToAction("ViewAllStudents", "Student");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Something Worng.Check Again !");
+                TempData["ErrorMessage"] = "An error occurred while deleting the Student. Please try again.";
                 return View();
             }
         }

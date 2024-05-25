@@ -12,7 +12,7 @@ namespace Sample.Interface
 
         Task UpdateDepartment(DepartmentViewModel Department);
         
-        Task DeleteDepartment(int id);
+        Task DeleteDepartment(int DepatmentId);
        
     }
 }
