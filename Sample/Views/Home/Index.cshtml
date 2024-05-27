@@ -4,10 +4,9 @@
 @{
     ViewData["Title"] = "Home Page";
 }
-<a class="dropdown-item" asp-controller="Department" asp-action="AddDepartment">Action</a>
 <div>
 
-    @if (SignInManager.IsSignedIn(User))
+    @* @if (SignInManager.IsSignedIn(User))
     {
         <li class="nav-item">
             <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
@@ -17,16 +16,6 @@
                 <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
             </form>
         </li>
-    }
+    } *@
 </div>
 
-<div>
-    <div >
-        @if (SignInManager.IsSignedIn(User))
-        {
-            var user = await UserManager.GetUserAsync(User);
-            //<label>Welcome, @user.FullName!</label>
-            @* <p>Welcome, @user.FullName!</p> *@
-        }
-    </div>
-</div>

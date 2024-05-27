@@ -7,7 +7,7 @@ using Sample.ViewModel;
 
 namespace Sample.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class DepartmentController : Controller
     {
         private readonly IDepartmentRepository _Departmentrepository;

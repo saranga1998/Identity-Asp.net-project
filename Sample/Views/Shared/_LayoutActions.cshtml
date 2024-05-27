@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -50,6 +53,22 @@
                                 </li>
                             </ul>
                         </li>
+                        <div class="card col-10 justify-content-center p-1 border">
+                            @if (SignInManager.IsSignedIn(User))
+                            {
+                                <p class="fw-bold fs-4 text-black m-1 p-1 card-header col-5 rounded-3 ">Hello</p>
+                                <a class="text-dark btn-link text-sm-center card-body" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">@User.Identity?.Name!</a>
+                            @* <li class="nav-item ">
+                                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">@User.Identity?.Name!</a>
+                            </li> *@
+
+                                <form class="card-footer " asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                    <button type="submit" class="btn btn-primary col-8">Logout</button>
+                                </form>
+                            
+                            }
+                        </div>
+                        
                     </ul>
                     <hr>
 
