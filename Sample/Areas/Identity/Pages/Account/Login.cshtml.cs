@@ -114,21 +114,24 @@ namespace Sample.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = await _userManager.FindByEmailAsync(Input.Email);
-                if (user != null && !await _userManager.IsEmailConfirmedAsync(user))
-                {
-                    ModelState.AddModelError(string.Empty, "You must have a confirmed email to log in.");
-                    return Page();
-                }
+                //if (user != null && !await _userManager.IsEmailConfirmedAsync(user))
+                //{
+                //    ModelState.AddModelError(string.Empty, "You must have a confirmed email to log in.");
+                //    return Page();
+                //}
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
                 var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
+                    var claims = await _userManager.GetClaimsAsync(user);
+                    if (!claims.Any(c => c.Type == "FullName"))
+                    {
+                        await _userManager.AddClaimAsync(user, new System.Security.Claims.Claim("FullName", user.FullName));
+                    }
                     _logger.LogInformation("User logged in.");
                     return LocalRedirect(returnUrl);
-                    //return LocalRedirect("~/");
-                    //return RedirectToAction("AddDepartment", "Department");
-                    //return RedirectToLocal(returnUrl);
+                    
                 }
                 if (result.RequiresTwoFactor)
                 {
