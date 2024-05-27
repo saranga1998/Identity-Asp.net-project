@@ -55,20 +55,7 @@ namespace Sample.Controllers
                 Departments = AllDepartments
             };
             return View(Viewmodel);
-            //try
-            //{
-            //    var AllDepartments = await _Departmentrepository.ViewAllDepartment();
-            //    var Viewmodel = new CompositeViewModel
-            //    {
-            //        Departments = AllDepartments
-            //    };
-            //    return View(Viewmodel);
-            //}
-            //catch (Exception ex)
-            //{
-            //    _logger.LogError(ex, "Something Worng.Check Again !");
-            //    return View();
-            //}
+            
             
         }
 

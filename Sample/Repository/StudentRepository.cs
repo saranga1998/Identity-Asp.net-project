@@ -40,6 +40,12 @@ namespace Sample.Repository
             }
         }
 
+        public async Task<List<Models.Department>> GetallDepartment()
+        {
+            return await _applicationDb.Departments.ToListAsync();
+            
+        }
+
         public async Task<StudentViewModel> StudentGetById(int id)
         {
             var student = await _applicationDb.Students.FindAsync(id);

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Sample.Interface;
 using Sample.Models;
 using Sample.Repository;
@@ -19,8 +20,10 @@ namespace Sample.Controllers
         }
 
         [HttpGet]
-        public IActionResult AddStudent()
+        public async Task<IActionResult> AddStudent()
         {
+            var departments = await _studentRepository.GetallDepartment();
+            ViewBag.Departments = new SelectList(departments, "DepartmentId", "Name");
             return View();
         }
 

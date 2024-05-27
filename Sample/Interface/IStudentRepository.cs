@@ -1,4 +1,5 @@
-﻿using Sample.ViewModel;
+﻿using Sample.Models;
+using Sample.ViewModel;
 
 namespace Sample.Interface
 {
@@ -14,5 +15,7 @@ namespace Sample.Interface
         Task UpdateStudent(StudentViewModel student);
 
         Task DeleteStudent(int id);
+
+        Task<List<Models.Department>> GetallDepartment();
     }
 }
