@@ -29,12 +29,13 @@
                 <span asp-validation-for="Address" class="text-danger"></span>
             </div>
             <div class="input-group input-group-md mb-3 col-8">
-                <label asp-for="DepartmentId" class="input-group-text col-4 rounded-3 border border-end-0 border-3">Department Id</label>
-                <input asp-for="DepartmentId" class="form-control col-4 rounded-3 border border-start-0 border-3" />
-                <span asp-validation-for="DepartmentId" class="text-danger"></span>
+                <label asp-for="DepartmentName" class="input-group-text col-4 rounded-3 border border-end-0 border-3">Department Name</label>
+                @* <input asp-for="DepartmentName" class="form-control col-4 rounded-3 border border-start-0 border-3" /> *@
+                <select asp-for="DepartmentId" asp-items="ViewBag.Departments" class="form-control col-4 rounded-3 border border-start-0 border-3"></select>
+                <span asp-validation-for="DepartmentName" class="text-danger"></span>
             </div>
             <div class="input-group input-group-md mb-3 col-8">
-                <input type="submit" value="Create" class="w-100 btn btn-lg btn-primary" />
+                <input type="submit" value="Update" class="w-100 btn btn-lg btn-primary" />
             </div>
         </form>
     </div>

@@ -13,8 +13,12 @@
 
     @if (!string.IsNullOrEmpty(successMessage))
     {
-        <div class="alert alert-success">
+        <div class="alert alert-success flex-row">
             @successMessage
+            
+                <i class="fa fa-close btn btn-close "></i>
+            
+            
         </div>
     }
 
@@ -22,8 +26,11 @@
     {
         <div class="alert alert-danger">
             @errorMessage
+            <i class="fa fa-close"></i>
         </div>
     }
+
+
 
     <div class="col-md-8 m-3 card">
         <p class="fw-bold row justify-content-center fs-4">View All Students</p>
@@ -48,7 +55,7 @@
                             <td>@student.Id</td>
                             <td>@student.Name</td>
                             <td>@student.Address</td>
-                            <td>@student.DepartmentId</td>
+                            <td>@student.DepartmentName</td>
 
                             <td>
 

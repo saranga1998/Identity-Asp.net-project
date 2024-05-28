@@ -63,6 +63,8 @@ namespace Sample.Controllers
         public async Task<IActionResult> EditStudent(int id)
         {
             var editStudent = await _studentRepository.StudentGetById(id);
+            var departments = await _studentRepository.GetallDepartment();
+            ViewBag.Departments = new SelectList(departments, "DepartmentId", "Name");
             return View(editStudent);
         }
 

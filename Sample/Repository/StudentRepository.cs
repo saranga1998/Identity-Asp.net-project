@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using Sample.Data;
 using Sample.Interface;
 using Sample.Models;
@@ -48,14 +49,39 @@ namespace Sample.Repository
 
         public async Task<StudentViewModel> StudentGetById(int id)
         {
-            var student = await _applicationDb.Students.FindAsync(id);
+            //var student = await _applicationDb.Students.FindAsync(id);
+
+
+            //var studentViewModel = new StudentViewModel
+            //{
+            //    Id = student.Id,
+            //    DepartmentId = student.DepartmentId,
+            //    Name = student.Name,
+            //    Address = student.Address,
+
+            //};
+
+            //return studentViewModel;
+            var student = await _applicationDb.Students
+            .Include(s => s.Department)
+            .FirstOrDefaultAsync(s => s.Id == id);
+
+           
+
+            var departments = await _applicationDb.Departments.ToListAsync();
 
             var studentViewModel = new StudentViewModel
             {
                 Id = student.Id,
                 DepartmentId = student.DepartmentId,
+                DepartmentName = student.Department?.Name,
                 Name = student.Name,
                 Address = student.Address,
+                //Departments = departments.Select(d => new SelectListItem
+                //{
+                //    Value = d.DepartmentId.ToString(),
+                //    Text = d.Name
+                //}).ToList()
             };
 
             return studentViewModel;
@@ -64,13 +90,16 @@ namespace Sample.Repository
         public async Task UpdateStudent(StudentViewModel student)
         {
             var updateStudent = await _applicationDb.Students.FindAsync(student.Id);
-
+            
             if (updateStudent != null)
             {
                 
+
                 updateStudent.Name = student.Name;
                 updateStudent.Address =student.Address;
                 updateStudent.DepartmentId = student.DepartmentId;
+
+
                 _applicationDb.Update(updateStudent);
                 await _applicationDb.SaveChangesAsync();
             }
@@ -78,9 +107,12 @@ namespace Sample.Repository
 
         public async Task<List<StudentViewModel>> ViewAllStudents()
         {
-            var students = await _applicationDb.Students.ToListAsync();
+            //var students = await _applicationDb.Students.ToListAsync();
 
-            List<StudentViewModel> departmentViewModels = new List<StudentViewModel>();
+            var students = await _applicationDb.Students
+            .Include(s => s.Department) 
+            .ToListAsync();
+            List<StudentViewModel> studentViewModels = new List<StudentViewModel>();
 
             foreach (var student in students)
             {
@@ -89,13 +121,14 @@ namespace Sample.Repository
                     Id=student.Id,
                     Name = student.Name,
                     Address = student.Address,
-                    DepartmentId=student.DepartmentId
+                    DepartmentId=student.DepartmentId,
+                    DepartmentName = student.Department.Name
                 };
 
-                departmentViewModels.Add(result);
+                studentViewModels.Add(result);
             }
 
-            return departmentViewModels;
+            return studentViewModels;
         }
     }
 }
