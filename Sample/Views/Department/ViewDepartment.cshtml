@@ -33,6 +33,7 @@
                 <tr>
                     <th class="Col01">Department ID</th>
                     <th class="Col02">Department Name</th>
+                    <th class="Col03">Options</th>
                 </tr>
             </thead>
             <tbody>
@@ -46,8 +47,12 @@
 
                             <td>
 
-                                <a class="btn" href="/Department/EditDepartment?DepatmentId=@department.DepartmentId">Edit</a>
-                                <a class="btn" href="/Department/DeleteDepartment?DepatmentId=@department.DepartmentId">Delete</a>
+                                <a class="btn btn-sm border-1 btn-dark text-light fw-bold " href="/Department/EditDepartment?DepatmentId=@department.DepartmentId">Edit
+                                    <i class="fa fa-edit"></i>
+                                </a>
+                                <a class="btn btn-sm border btn-info text-dark fw-bold" href="/Department/DeleteDepartment?DepatmentId=@department.DepartmentId">Delete
+                                    <i class="fa fa-delete-left"></i>
+                                </a>
                                
                             </td>
                         </tr>

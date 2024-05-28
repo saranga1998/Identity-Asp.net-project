@@ -35,6 +35,7 @@
                     <th class="Col02">Student Name</th>
                     <th class="Col03">Student Address</th>
                     <th class="Col04">Department Name</th>
+                    <th class="Col05">Options</th>
                 </tr>
             </thead>
             <tbody>
@@ -51,8 +52,12 @@
 
                             <td>
 
-                                <a class="btn" href="/Student/EditStudent?id=@student.Id">Edit</a>
-                                <a class="btn" href="/Student/DeleteStudent?stuId=@student.Id">Delete</a>
+                                <a class="btn btn-sm border-1 btn-dark text-light fw-bold " href="/Student/EditStudent?id=@student.Id">Edit
+                                    <i class="fa fa-edit"></i>
+                                </a>
+                                <a class="btn btn-sm border btn-info text-dark fw-bold" href="/Student/DeleteStudent?stuId=@student.Id">Delete
+                                    <i class="fa fa-delete-left"></i>
+                                </a>
 
                             </td>
                         </tr>

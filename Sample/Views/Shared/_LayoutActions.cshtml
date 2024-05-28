@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/HomeBackground.css" asp-append-version="true" />
-
+    <link href="~/lib/font-awesome/css/all.css" rel="stylesheet" />
+    <link href="~/lib/font-awesome/css/all.min.css" rel="stylesheet" />
 </head>
 <body>
     <div class="container-fluid">
@@ -22,17 +23,18 @@
                     <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                         <li class="nav-item">
                             <a asp-controller="Home" asp-action="Index" class="nav-link align-middle px-0 text-white">
-                                <i class="fs-4 bi bi-house-fill"></i><span class="ms-1 d-none d-sm-inline">Home</span>
+                                <i class="fs-4 bi bi-house-fill"></i><span class="ms-1 d-none d-sm-inline fw-bold fs-6">Home</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-white">
-                                <i class="fs-4 bi bi-people-fill"></i><span class="ms-1 d-none d-sm-inline">Departments</span>
+                            <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-white" role="button" >
+                                <i class="fs-4 bi bi-people-fill"></i><span class="ms-1 d-none d-sm-inline fw-bold fs-6">Departments</span>
+                                <i class="fa fa-sort-up p-1 navbar-toggler-icon" style="font-size:15px;color:red"></i>
                             </a>
-                            <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
+                            <ul class="collapse show nav flex-column ms-1 justify-content-sm-end" id="submenu1" data-bs-parent="#menu">
                                 <li class="w-100">
-                                    <a asp-controller="Department" asp-action="AddDepartment" class="nav-link px-0 text-white"> Add Department</a>
+                                    <a asp-controller="Department" asp-action="AddDepartment" class="nav-link px-0 text-white "> Add Department</a>
                                 </li>
                                 <li>
                                     <a asp-controller="Department" asp-action="ViewDepartment" class="nav-link px-0 text-white"> View All Department </a>
@@ -41,8 +43,8 @@
                         </li>
 
                         <li>
-                            <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-white">
-                                <i class="fs-4 bi bi-building-fill-gear"></i><span class="ms-1 d-none d-sm-inline">Student</span>
+                            <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-white" role="button" data-toggle="dropdown">
+                                <i class="fs-4 bi bi-building-fill-gear"></i><span class="ms-1 d-none d-sm-inline fw-bold fs-6">Student</span>
                             </a>
                             <ul class="collapse show nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
                                 <li class="w-100">
@@ -53,7 +55,8 @@
                                 </li>
                             </ul>
                         </li>
-                        <div class="card col-10 border">
+                        
+                        <div class="card col-10 border align-bottom">
                             @if (SignInManager.IsSignedIn(User))
                             {
                                 <p class="fw-bold fs-4 text-black m-1 p-1 card-header rounded-3 row justify-content-center">Hello</p>
@@ -64,7 +67,9 @@
 
 
                                 <form class="card-footer row justify-content-center" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                                    <button type="submit" class="btn btn-dark Sign-text col-8">Logout</button>
+                                    <button type="submit" class="btn btn-dark Sign-text col-8">Logout
+                                        <i class="fa fa-backward"></i>
+                                    </button>
                                 </form>
                             
                             }
@@ -90,6 +95,7 @@
 
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
 
 @await RenderSectionAsync("Scripts", required: false)
 
