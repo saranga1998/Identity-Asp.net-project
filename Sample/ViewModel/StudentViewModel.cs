@@ -9,7 +9,9 @@ namespace Sample.ViewModel
 
         public string? Address { get; set; }
 
-        public int DepartmentId { get; set; } 
+        public int DepartmentId { get; set; }
+        
+        public string? DepartmentName { get; set; }
         
     }
 }
